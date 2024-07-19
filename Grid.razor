@@ -1,0 +1,64 @@
+﻿
+@page "/grid"
+<h3>Grid</h3>
+
+
+    <table id="editableTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Requerid by</th>
+                <th>Authorized by</th>
+                <th>ECO Complete</th>
+                <th>DELTA Complete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+          
+                @foreach (var item in deltaList)
+                {
+
+
+                <tr>
+                    <td class="edit-mode">@index</td>
+                    <td class="edit-mode">@item.Id</td>
+                    <td class="edit-mode">@item.Name</td>
+                    <td class="edit-mode">@item.LastName</td>
+                    <td class="edit-mode">@item.UnitPrice</td>
+                    <td class="edit-mode">@item.Item</td>
+                   
+
+                    <td>
+                        <span class="edit" onclick="enableEditMode(this)">Edit</span>
+                        <span class="save-btn" onclick="saveChanges(this)">Save</span>
+                        <span class="cancel-btn" onclick="cancelEdit(this)">Cancel</span>
+                        
+                    </td>
+            </tr>
+            index = index + 1;
+        }
+            
+        </tbody>
+    </table>
+
+
+
+
+  <button onclick="addRow()">Agregar Fila</button>
+  <button type="button" class="btn btn-secondary" @onclick="FormClosed">Save</button>
+@code {
+    List<Delta> deltaList= new List<Delta>
+    {
+       new Delta { Id = 23, Name = "a n g e l a", LastName = "jauregui", UnitPrice = 8.93, Item = "compu" },
+           new Delta { Id = 43, Name = "angela", LastName = "ggrt", UnitPrice = 8.93, Item = "feger" },
+            new Delta { Id = 26, Name = "angela", LastName = "greg", UnitPrice = 8.93, Item = "grege" },
+            new Delta { Id = 27, Name = "juan", LastName = "romeor", UnitPrice = 8.93, Item = "wfeg" },
+            new Delta { Id = 29, Name = "francis", LastName = "tghrg", UnitPrice = 8.93, Item = "gege" }, 
+    };
+
+    int index = 1;       
+
+        
+}
